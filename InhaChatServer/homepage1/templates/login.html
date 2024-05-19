@@ -117,8 +117,7 @@
                 <input type="checkbox" id="remember-check">아이디 저장하기
             </label>
             <button class="login" onclick="logIn()">Login</button>
-            <a href="file:///C:/Users/jiwoo-choi/Downloads/join-membership.html" class="signup-link">회원가입</a>
-            <button class="signup-link" onclick="sign()">회원가입</button>
+            <a href="/signUp" class="signup-link">회원가입</a>
         </div>
         <img src="chatbot0.png" alt="Bottom Image" class="bottom-image">
         <script>
@@ -137,17 +136,6 @@
                         { email: userEmail },
                         { password: userPassword }
                     ])
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.redirect) {
-                        window.location.href = data.redirect;
-                    }
-                })
-            }
-            function sign() {
-                fetch('/go_signUp', {
-                    method: 'POST'
                 })
                 .then(response => response.json())
                 .then(data => {

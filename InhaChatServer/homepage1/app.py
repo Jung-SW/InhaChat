@@ -40,14 +40,23 @@ Session(app)
 
 # atexit.register(lambda: scheduler.shutdown())
 
+# 입장 시
+@app.route('/')
+def enter():
+    session['check_login'] = False
+    return redirect(url_for('login'))
+
 # 메인 화면
 @app.route('/main')
 def main():
+    if session['check_login'] == False:
+        return redirect(url_for('login'))
     return render_template('index.html')
 
 # 로그인 화면
 @app.route('/login')
 def login():
+    session['check_login'] = False
     return render_template('login.html')
 
 # 로그인 정보 확인
@@ -63,13 +72,9 @@ def login_check():
     except IndexError:
         return jsonify({'error': 'error' })
     session['thread_id'] = row
+    session['check_login'] = True
     conn.close()
     return jsonify({'redirect': url_for('main')})
-
-# 회원가입 창으로 이동
-@app.route('/go_signUp', methods=['POST'])
-def go_signUp():
-    return jsonify({'redirect': url_for('signUp')})
 
 # 회원가입 화면
 @app.route('/signUp')
@@ -83,6 +88,14 @@ def sign():
     name = data[0]['name']
     email = data[1]['email']
     password = data[2]['password']
+    conn = connect()
+    cur = conn.cursor()
+    cur.execute(f'select * from chatbotuser where userName="{name}"')
+    conn.commit()
+    temp = list(cur.fetchall())
+    for user in temp:
+        if user[1] == email and user[2] == password:
+            return jsonify({'error': 'another_email_or_password'})
     thread = client.beta.threads.create()
     print(thread)
     conn = connect()
