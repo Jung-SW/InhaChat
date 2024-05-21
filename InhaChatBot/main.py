@@ -7,6 +7,8 @@ API_KEY = os.environ['OPENAI_API_KEY']
 
 client = OpenAI(api_key=API_KEY)
 
+vector_store = client.beta.vector_stores.create(name="")
+
 # asst_IFFNqYkitBBHVAyS1h2VnhNK
 # assistant = client.beta.assistants.create(
 #    name="인하대 챗봇",
@@ -40,7 +42,7 @@ client = OpenAI(api_key=API_KEY)
 # )
 # print(run)
 
-messages = client.beta.threads.messages.list(
-    thread_id="thread_iJJMRWJw8uYsUqY8bN4yVhqL"
-)
-print(messages)
+# messages = client.beta.threads.messages.list(
+#     thread_id="thread_iJJMRWJw8uYsUqY8bN4yVhqL"
+# )
+# print(messages)

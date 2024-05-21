@@ -16,7 +16,7 @@ def connect():
 
 def updateChatGPT():
     try:
-        os.chdir(r'./everytime')
+        os.chdir(r'./database')
     except:
         pass
     everytime_data_crawling(1, 1, 3)
@@ -112,6 +112,7 @@ def ask():
     question = data['question']
     
     if question == "안녕":
+        time.sleep(3)
         answer = "안녕하세요!"
     elif question == "오늘 날씨는 어때?":
         answer = "오늘은 맑은 날씨예요."
