@@ -11,16 +11,10 @@ body{
     align-items: center;
     height: 100vh;
     margin: 0;
-}
 
-body {
     background-image: url('../images/login_background.png'); /* 배경 이미지 파일 경로 설정 */
     background-size: 50%;
     background-position: center;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     background-repeat: no-repeat; 
     background-color: #1e244f;
 }

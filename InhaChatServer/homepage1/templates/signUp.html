@@ -15,33 +15,6 @@
         <button onclick="signUp()" >가입하기</button>
         <p>이미 회원이신가요? <a href="/login">로그인</a></p>
     </div>
-    <script>
-        function signUp() {
-            var userName = document.getElementById("user-name").value;
-            var userEmail = document.getElementById("user-email").value;
-            var userPassword = document.getElementById("user-password").value;
-            if(userName.trim() === "") return;
-            if(userEmail.trim() === "") return;
-            if(userPassword.trim() === "") return;
-
-            fetch('/sign', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify([
-                    { name: userName },
-                    { email: userEmail },
-                    { password: userPassword }
-                ])
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.redirect) {
-                    window.location.href = data.redirect;
-                }
-            })
-        }
-    </script>
+    <script src="{{ url_for('static', filename='javascript/signUp.js') }}"></script>
 </body>
 </html>
