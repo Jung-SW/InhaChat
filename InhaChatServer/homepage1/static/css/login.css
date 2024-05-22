@@ -12,7 +12,7 @@ body{
     height: 100vh;
     margin: 0;
 
-    background-image: url('static/images/login_background.png'); /* 배경 이미지 파일 경로 설정 */
+    background-image: url('../images/login_background.png'); /* 배경 이미지 파일 경로 설정 */
     background-size: 50%;
     background-position: center;
     background-repeat: no-repeat; 
@@ -34,6 +34,7 @@ h2{
     color: hsl(211, 76%, 63%);
     margin-bottom: 20px;
 }
+
 input, .login{
     width: 100%;
     height: 48px;
@@ -46,12 +47,14 @@ input, .login{
 input::placeholder{
     color: #D2D2D2;
 }
+
 .login{
     color: #fff;
     font-size: 16px;
     background-color: #5ac4f4;
     margin-top: 20px;
 }
+
 .signup-link {
     background-color: none;
     text-decoration: none;

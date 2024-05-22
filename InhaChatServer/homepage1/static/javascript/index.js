@@ -20,7 +20,7 @@ function chatbotAnswer(customInput) {
     // 챗봇 프로필 이미지 생성
     var botProfile = document.createElement("div");
     botProfile.classList.add("bot_prof");
-    botProfile.innerHTML = '<img class="inha" src="static/images/induk.jpg" height="45" width="45" style="cursor: pointer;" onclick="refreshPage()">';
+    botProfile.innerHTML = '<img src="static/images/induk.jpg" height="45" width="45" style="cursor: pointer;" onclick="refreshPage()">';
     chatContainer.appendChild(botProfile); // 챗봇 프로필 이미지를 메시지 컨테이너에 추가
 
     var botName = document.createElement("div"); // 챗봇 이름 요소 생성

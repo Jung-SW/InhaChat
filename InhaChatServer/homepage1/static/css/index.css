@@ -10,10 +10,9 @@ body, html {
     height: 100%;
     padding: 5%;
     box-sizing: border-box;
-    background-image: url("static/images/inha_made_bg.jpg");
+    background-image: url("../images/inha_made_bg.jpg");
     background-repeat: no-repeat;
     background-size: cover;
-    /* 배경색 */
 }
 .chat-container {
     width: 75%;
@@ -51,7 +50,6 @@ body, html {
     height: 30px;
     width: 30px;
     margin-right: 5px;
-
 }
 
 .messages {
@@ -60,56 +58,24 @@ body, html {
     padding: 20px;
 }
 
-.message {
-    margin-bottom: 20px;
-    /* 대화 사이의 간격 조정 */
-    padding: 1px 15px;
-    border-radius: 15px;
-    word-wrap: break-word;
+.bot_prof {
+    width: 45px;
+    /* 이미지의 너비 */
+    height: 45px;
+    /* 이미지의 높이 */
+    border-radius: 50%;
+    /* 동그라미 모양으로 만들기 위한 속성 */
+    background-size: cover;
+    /* 이미지가 요소에 맞게 맞추도록 설정 */
+    align-self: flex-start;
+    float: left;
+    margin-right: 10px
 }
 
 .message_bot_name {
     border-radius: 15px;
     word-wrap: break-word;
-}
 
-.user-message {
-    background-color: #e3f5fa;
-    /* 사용자 메시지 배경색 */
-    color: #003366;
-    /* 사용자 메시지 텍스트 색상 */
-    align-self: flex-end;
-    /* 사용자 메시지를 오른쪽에 배치 */
-    margin-left: 30%;
-    /* 챗봇과의 간격 조정 */
-    padding-bottom: 3px;
-    /* 글 우측 정렬 */
-    text-align: right;
-}
-
-.bot-message {
-    background-color: #4fa1ff;
-    /* 챗봇 메시지 배경색 */
-    color: #ffffff;
-    /* 챗봇 메시지 텍스트 색상 */
-    margin-left: 56px;
-    margin-right: 30%;
-    font-family: "나눔고딕";
-    /* 사용자와의 간격 조정 */
-    padding-top: 10px;
-    padding-bottom: 10px;
-    line-height: 24px;
-}
-.bot-message1 {
-    background-color: #ffffff;
-    /* 챗봇 메시지 배경색 */
-    color: #ffffff;
-    /* 챗봇 메시지 텍스트 색상 */
-    margin-left: 40px;
-    margin-right: 30%;
-    /* 사용자와의 간격 조정 */
-}
-.bot-message_name {
     background-color: #ffffff;
     /* 챗봇 메시지 배경색 */
     color: #000000;
@@ -128,65 +94,37 @@ body, html {
     /* 작성자와 메시지 사이 간격 조정 */
 }
 
-.message-author.user {
-    /*사용자 박스의 사용자 이름*/
-    text-align: right;
-    /* 사용자 메시지 작성자 오른쪽 정렬 */
+.message {
+    margin-bottom: 20px;
+    /* 대화 사이의 간격 조정 */
+    padding: 1px 15px;
+    border-radius: 15px;
+    word-wrap: break-word;
 }
 
-.message-author.bot {
-    /*챗봇 박스의 챗봇 이름*/
-    text-align: left;
-    /* 챗봇 메시지 작성자 왼쪽 정렬 */
+.bot-message {
+    background-color: #4fa1ff;
+    /* 챗봇 메시지 배경색 */
+    color: #ffffff;
+    /* 챗봇 메시지 텍스트 색상 */
+    margin-left: 56px;
+    margin-right: 30%;
     font-family: "나눔고딕";
-    color: #180d50;
-    font-weight: 600;
+    /* 사용자와의 간격 조정 */
+    padding-top: 10px;
+    padding-bottom: 10px;
+    line-height: 24px;
 }
 
-.message-input {
-    display: flex;
-    align-items: center;
-    padding: 15px;
-    border-top: 2px solid #003366;
-    /* 입력창 상단 테두리 색상 */
-}
-
-.bot_prof {
-    width: 45px;
-    /* 이미지의 너비 */
-    height: 45px;
-    /* 이미지의 높이 */
-    border-radius: 50%;
-    /* 동그라미 모양으로 만들기 위한 속성 */
-    background-size: cover;
-    /* 이미지가 요소에 맞게 맞추도록 설정 */
-    align-self: flex-start;
-    float: left;
-    margin-right: 10px
-}
-
-.user_prof {
-    width: 45px;
-    /* 이미지의 너비 */
-    height: 45px;
-    /* 이미지의 높이 */
-    border-radius: 50%;
-    /* 동그라미 모양으로 만들기 위한 속성 */
-    background-size: cover;
-    /* 이미지가 요소에 맞게 맞추도록 설정 */
-    align-self: flex-end;
-    float: right;
-}
-
-#user-input {
-    flex: 1;
-    padding: 10px;
-    margin-right: 10px;
-    border: 1px solid #a3c3e7;
-    /* 입력창 테두리 */
-    border-radius: 5px;
-    font-size: 16px;
-    box-sizing: border-box;
+.button-grid{
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    grid-gap: 15px 13px;
+    background-color: transparent; /* 배경색을 투명하게 설정 */
+    overflow: auto;
 }
 
 button {
@@ -208,7 +146,31 @@ button {
     align-content: center;
     box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.2);
 }
-button_send {
+button:hover {
+    background-color: #002547;
+    color:#e3f5fa
+}
+
+.message-input {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    border-top: 2px solid #003366;
+    /* 입력창 상단 테두리 색상 */
+}
+
+#user-input {
+    flex: 1;
+    padding: 10px;
+    margin-right: 10px;
+    border: 1px solid #a3c3e7;
+    /* 입력창 테두리 */
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+#sendButton {
     padding: 5px 10px;
     border: none;
     border-radius: 5px;
@@ -223,20 +185,20 @@ button_send {
     font-family: "나눔고딕";
     height: 30px;
 }
-button_send:hover {
+#sendButton:hover {
     background-color: #002547;
 }
-button:hover {
-    background-color: #002547;
-    color:#e3f5fa
-}
-.button-grid{
-    margin-top: 20px;
-    margin-left: auto;
-    margin-right: auto;
-    display: grid;
-    grid-template-columns: repeat(5,1fr);
-    grid-gap: 15px 13px;
-    background-color: transparent; /* 배경색을 투명하게 설정 */
-    overflow: auto;
+
+.user-message {
+    background-color: #e3f5fa;
+    /* 사용자 메시지 배경색 */
+    color: #003366;
+    /* 사용자 메시지 텍스트 색상 */
+    align-self: flex-end;
+    /* 사용자 메시지를 오른쪽에 배치 */
+    margin-left: 30%;
+    /* 챗봇과의 간격 조정 */
+    padding-bottom: 3px;
+    /* 글 우측 정렬 */
+    text-align: right;
 }

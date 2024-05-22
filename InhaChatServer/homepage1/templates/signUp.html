@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="{{url_for('static', filename='css/signUp.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="static/css/signUp.css" rel="stylesheet" type="text/css"/>
     <title>회원가입</title>
 </head>
 <body>
     <div class="signup-form">
         <h2>회원가입</h2>
-        <input type="text" id="user-name" name="username" placeholder="사용자명" required>
-        <input type="email" id="user-email" name="email" placeholder="이메일" required>
-        <input type="password" id="user-password" name="password" placeholder="비밀번호" required>
+        <input type="text" class="user" id="user-name" name="username" placeholder="사용자명" required>
+        <input type="email" class="user" id="user-email" name="email" placeholder="이메일" required>
+        <input type="password" class="user" id="user-password" name="password" placeholder="비밀번호" required>
         <button onclick="signUp()" >가입하기</button>
         <p>이미 회원이신가요? <a href="/login">로그인</a></p>
     </div>

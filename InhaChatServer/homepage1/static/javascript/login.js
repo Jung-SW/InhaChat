@@ -21,3 +21,11 @@ function logIn() {
         }
     })
 }
+
+// 엔터 키 누를 때 전송되도록 설정
+document.getElementById("user-password").addEventListener("keypress", function(event) {
+    if (event.keyCode === 13) {
+        event.preventDefault();
+        logIn();
+    }
+});
