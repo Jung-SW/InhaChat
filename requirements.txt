@@ -1,0 +1,7 @@
+selenium
+python-dotenv
+pymysql
+openai
+flask
+flask_session
+apscheduler
