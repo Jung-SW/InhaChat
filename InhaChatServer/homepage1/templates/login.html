@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="{{url_for('static', filename='css/login.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="static/css/login.css" rel="stylesheet" type="text/css"/>
     <title>Login</title>
 </head>
 <body>
@@ -11,13 +11,10 @@
             <h2>Login</h2>
             <input type="text" id="user-email" name="userName" placeholder="Email">
             <input type="password" id="user-password" name="userPassword" placeholder="Password">
-            <label for="remember-check">
-                <input type="checkbox" id="remember-check">아이디 저장하기
-            </label>
             <button class="login" onclick="logIn()">Login</button>
             <a href="/signUp" class="signup-link">회원가입</a>
         </div>
-        <img src="{{ url_for('static', filename='images/login_bottom_img.png') }}" alt="Bottom Image" class="bottom-image">
-        <script src="{{ url_for('static', filename='javascript/login.js') }}"></script>
+        <img src="static/images/login_bottom_img.png" alt="Bottom Image" class="bottom-image">
+        <script src="static/javascript/login.js"></script>
 </body>
 </html>

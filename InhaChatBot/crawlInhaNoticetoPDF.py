@@ -47,10 +47,10 @@ for i in range(37010, 37020):
     title = title.replace(">", "]")
     time.sleep(3)
     if title:
-        # html_comments = driver.find_elements(By.CLASS_NAME, "artclView")
-        # with open('crawled_files/'+title+'.txt', 'w', encoding='UTF8') as d:
-        #     for comment in html_comments:
-        #         text = d.write(comment.text)
+        html_comments = driver.find_elements(By.CLASS_NAME, "artclView")
+        with open('crawled_files/'+title+'.txt', 'w', encoding='UTF8') as d:
+            for comment in html_comments:
+                text = d.write(comment.text)
         title = title + '.pdf'
         try:
             pdfkit.from_url(url, title, options=options, configuration=config)

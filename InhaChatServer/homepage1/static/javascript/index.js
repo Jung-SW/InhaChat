@@ -2,31 +2,6 @@ function refreshPage() {
     window.location.reload();
 }
 
-// 사용자가 선택한 버튼에 따라 다른 답변을 출력하는 함수
-function handleButtonClick(buttonName) {
-    if (buttonName === "A1") {
-        chatbotAnswer("학사일정");
-    } else if (buttonName === "A2") {
-        chatbotAnswer("캠퍼스맵")
-    } else if (buttonName === "A3") {
-        chatbotAnswer("수강신청")
-    } else if (buttonName === "A4") {
-        chatbotAnswer("교내연락처")
-    } else if (buttonName === "A5") {
-        chatbotAnswer("I-Class")
-    } else if (buttonName === "A6") {
-        chatbotAnswer("생활관")
-    } else if (buttonName === "A7") {
-        chatbotAnswer("인하 포털")
-    } else if (buttonName === "A8") {
-        chatbotAnswer("정석학술정보관")
-    } else if (buttonName === "A9") {
-        chatbotAnswer("증명서 발급 시스템")
-    } else if (buttonName === "A10") {
-        chatbotAnswer("국제처")
-    } 
-}
-
 function chatbotAnswer(customInput) {
     var userInput = customInput || document.getElementById("user-input").value;
     if (userInput.trim() === "") return;

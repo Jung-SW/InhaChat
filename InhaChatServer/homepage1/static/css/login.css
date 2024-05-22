@@ -12,7 +12,7 @@ body{
     height: 100vh;
     margin: 0;
 
-    background-image: url('../images/login_background.png'); /* 배경 이미지 파일 경로 설정 */
+    background-image: url('static/images/login_background.png'); /* 배경 이미지 파일 경로 설정 */
     background-size: 50%;
     background-position: center;
     background-repeat: no-repeat; 
@@ -20,7 +20,7 @@ body{
 }
 
 .login-wrapper{
-    width: 750px;
+    width: 45%;
     height: 700px;
     padding: 40px;
     top: 40%;
@@ -52,26 +52,6 @@ input::placeholder{
     background-color: #5ac4f4;
     margin-top: 20px;
 }
-
-input[type="checkbox"]{
-    display: none;
-}
-label{
-    color: #999999;
-}
-input[type="checkbox"] + label{
-    cursor: pointer;
-    padding-left: 26px;
-    background-image: url("checkbox.png");
-    background-repeat: no-repeat;
-    background-size: contain;
-}
-input[type="checkbox"]:checked + label{
-    background-image: url("checkbox-active.png");
-    background-repeat: no-repeat;
-    background-size: contain;
-}
-
 .signup-link {
     background-color: none;
     text-decoration: none;
@@ -79,7 +59,6 @@ input[type="checkbox"]:checked + label{
     margin-top: 10px;
     display: inline-block;
 }
-
 .signup-link:hover {
     text-decoration: underline;
 }

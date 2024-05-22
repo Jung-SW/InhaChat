@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="{{url_for('static', filename='css/index.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="static/css/index.css" rel="stylesheet" type="text/css"/>
     <title>무엇이든 물어보살</title>
 </head>
 <body>
     <div class="container">
         <div class="chat-container">
-            <div class="chat-header"><img src="{{ url_for('static', filename='images/inha_emb.png') }}" height="45" width="45">INHA UNIVERSITY</div>
+            <div class="chat-header"><img src="static/images/inha_emb.png" height="45" width="45">INHA UNIVERSITY</div>
             <div class="messages">
-                <div class="bot_prof"><img class="inha" src="{{ url_for('static', filename='images/induk.jpg') }}" height="45" width="45" style="cursor: pointer;" onclick="refreshPage()"></div>
+                <div class="bot_prof"><img class="inha" src="static/images/induk.jpg" height="45" width="45" style="cursor: pointer;" onclick="refreshPage()"></div>
                 <div class="message_bot_name bot-message_name">
                     <div class="message-author inbot">기계인덕 🦆</div>
                 </div>
@@ -21,16 +21,16 @@
                     <div>언제나 여러분의 궁금증을 해결해주는 기계인덕이 바로 답변해드려요!</div>
                     <div>창을 정리하고 싶다면 제 얼굴을 눌러주세요 @.@ </div>
                     <div class="message bot-message1 button-grid">
-                        <div class="button"> <button onclick="handleButtonClick('A1')">학사일정</button> </div>
-                        <div class="button"> <button onclick="handleButtonClick('A2')">캠퍼스맵</button> </div>
-                        <div class="button"> <button onclick="handleButtonClick('A3')">수강신청</button> </div>
-                        <div class="button"> <button onclick="handleButtonClick('A4')">교내연락처</button> </div>
-                        <div class="button"> <button onclick="handleButtonClick('A5')">I-Class</button> </div>
-                        <div class="button"> <button onclick="handleButtonClick('A6')">생활관</button> </div>
-                        <div class="button"> <button onclick="handleButtonClick('A7')">인하 포털</button> </div>
-                        <div class="button"> <button onclick="handleButtonClick('A8')">정석학술정보관</button> </div>
-                        <div class="button"> <button onclick="handleButtonClick('A9')">증명서 발급 시스템</button> </div>
-                        <div class="button"> <button onclick="handleButtonClick('A10')">국제처</button> </div>
+                        <div class="button"> <button onclick="chatbotAnswer('학사일정')">학사일정</button> </div>
+                        <div class="button"> <button onclick="chatbotAnswer('캠퍼스맵')">캠퍼스맵</button> </div>
+                        <div class="button"> <button onclick="chatbotAnswer('수강신청')">수강신청</button> </div>
+                        <div class="button"> <button onclick="chatbotAnswer('교내연락처')">교내연락처</button> </div>
+                        <div class="button"> <button onclick="chatbotAnswer('I-Class')">I-Class</button> </div>
+                        <div class="button"> <button onclick="chatbotAnswer('생활관')">생활관</button> </div>
+                        <div class="button"> <button onclick="chatbotAnswer('인하 포털')">인하 포털</button> </div>
+                        <div class="button"> <button onclick="chatbotAnswer('정석학술정보관')">정석학술정보관</button> </div>
+                        <div class="button"> <button onclick="chatbotAnswer('증명서 발급 시스템')">증명서 발급 시스템</button> </div>
+                        <div class="button"> <button onclick="chatbotAnswer('국제처')">국제처</button> </div>
                     </div>
                 </div>
             </div>
@@ -40,6 +40,6 @@
             </div>
         </div>
     </div>
-    <script src="{{ url_for('static', filename='javascript/index.js') }}"></script>
+    <script src="static/javascript/index.js"></script>
 </body>
 </html>
