@@ -25,7 +25,7 @@ function chatbotAnswer(customInput) {
 
     var botName = document.createElement("div"); // 챗봇 이름 요소 생성
     botName.classList.add("message-author", "bot"); // 챗봇 이름 클래스 추가
-    botName.innerText = "기계인덕"; // 챗봇 이름 설정
+    botName.innerText = "기계인덕 🦆"; // 챗봇 이름 설정
     chatContainer.appendChild(botName); // 챗봇 이름 요소를 챗봇 메시지 컨테이너에 추가
 
     // "답변 생성 중" 메시지 추가

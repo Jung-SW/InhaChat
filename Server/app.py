@@ -206,27 +206,28 @@ def ask():
     else:
         THREAD_ID = session.get('thread_id')
         
-        client.beta.threads.messages.create(
-            thread_id=THREAD_ID,
+        answer = "인공지능 수리중..."
+        # client.beta.threads.messages.create(
+        #     thread_id=THREAD_ID,
             
-            role="user",
-            content=question
-        )
-        run = client.beta.threads.runs.create(
-            thread_id=THREAD_ID,
-            assistant_id=ASSISTANT_ID
-        )
-        while run.status == "queued" or run.status == "in_progress":
-            run = client.beta.threads.runs.retrieve(
-                thread_id=THREAD_ID,
-                run_id=run.id
-            )
-            time.sleep(0.5)
-        messages = client.beta.threads.messages.list(
-            thread_id=THREAD_ID,
-            order="asc"
-        )
-        answer = messages.data[-1].content[0].text.value
+        #     role="user",
+        #     content=question
+        # )
+        # run = client.beta.threads.runs.create(
+        #     thread_id=THREAD_ID,
+        #     assistant_id=ASSISTANT_ID
+        # )
+        # while run.status == "queued" or run.status == "in_progress":
+        #     run = client.beta.threads.runs.retrieve(
+        #         thread_id=THREAD_ID,
+        #         run_id=run.id
+        #     )
+        #     time.sleep(0.5)
+        # messages = client.beta.threads.messages.list(
+        #     thread_id=THREAD_ID,
+        #     order="asc"
+        # )
+        # answer = messages.data[-1].content[0].text.value
 
     return jsonify({'answer': answer})
 
