@@ -51,7 +51,7 @@ Session(app)
 
 
 scheduler = BackgroundScheduler()
-scheduler.add_job(func=updateChatGPT, trigger="interval", minutes=1)
+scheduler.add_job(func=updateChatGPT, trigger="interval", minutes=30)
 scheduler.start()
 
 atexit.register(lambda: scheduler.shutdown())
