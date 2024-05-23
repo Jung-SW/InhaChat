@@ -31,7 +31,7 @@ function chatbotAnswer(customInput) {
     // "답변 생성 중" 메시지 추가
     var loadingMessage = document.createElement("div");
     loadingMessage.classList.add("message", "bot-message");
-    loadingMessage.innerHTML = `<div class="message-author bot">챗봇</div>답변 생성 중<span id="loading-dots">.</span>`;
+    loadingMessage.innerHTML = `답변 생성 중<span id="loading-dots">.</span>`;
     chatContainer.appendChild(loadingMessage);
     chatContainer.scrollTop = chatContainer.scrollHeight;
     

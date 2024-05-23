@@ -1,5 +1,5 @@
 @echo off
-cd InhaChatServer\homepage1
+cd Server
 call Scripts\activate
 python app.py
 pause

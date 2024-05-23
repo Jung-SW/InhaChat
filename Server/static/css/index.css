@@ -198,7 +198,8 @@ button:hover {
     /* 사용자 메시지를 오른쪽에 배치 */
     margin-left: 30%;
     /* 챗봇과의 간격 조정 */
-    padding-bottom: 3px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     /* 글 우측 정렬 */
     text-align: right;
 }

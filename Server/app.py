@@ -111,7 +111,7 @@ def ask():
     data = request.json
     question = data['question']
     
-    if question == "안녕":
+    if question == "안녕" or question == "hi":
         time.sleep(3)
         answer = "안녕하세요!"
     elif question == "학사일정":
