@@ -3,16 +3,16 @@ from openai import OpenAI
 from dotenv import load_dotenv
 import os
 import time
-import pymysql
 from flask_session import Session
 from apscheduler.schedulers.background import BackgroundScheduler
 import atexit
 from everytime_data_crawling import everytime_data_crawling
+import sqlite3
 
 conn, cur = None, None
 
 def connect():
-    return pymysql.connect(host='127.0.0.1', user='root', password='0000', db='user_threadDB.sql', charset='utf8')
+    return sqlite3.connect('userDB/user_threadDB.db')
 
 def updateChatGPT():
     try:
@@ -37,6 +37,19 @@ def updateChatGPT():
     # )
     
     print("update files")
+
+def chech_user_data(name, email, password):
+    conn = connect()
+    cur = conn.cursor()
+    select_query = 'select userName, email, password from chatbotuser'
+    cur.execute(select_query)
+    db_data = cur.fetchall()
+    conn.close()
+    for db_row in db_data:
+        db_userName, db_email, db_password = db_row
+        if db_userName == name and db_email == email and db_password == password:
+            return True
+    return False
 
 load_dotenv()
 API_KEY = os.environ['OPENAI_API_KEY']
@@ -79,18 +92,24 @@ def login():
 @app.route('/check_login', methods=['POST'])
 def login_check():
     data = request.json
+    
     conn = connect()
     cur = conn.cursor()
-    cur.execute(f"select thread_ID from chatbotuser where email='{data[0]['email']}' and password='{data[1]['password']}'")
-    conn.commit()
-    try:
-        row = list(cur.fetchall())[0][0]
-    except IndexError:
-        return jsonify({'error': 'error' })
-    session['thread_id'] = row
-    session['check_login'] = True
+    
+    query = "select password from chatbotuser where email=?"
+    cur.execute(query, (data[0]['email'], ))
+    
+    db_password = cur.fetchone()
     conn.close()
-    return jsonify({'redirect': url_for('main')})
+    if db_password[0] == data[1]['password']:
+        print(f"{db_password[0]}, {data[1]['password']}")
+        print("비번 일치함")
+        session['check_login'] = True
+        return jsonify({'redirect': url_for('main')})
+    else:
+        print(f"{db_password[0]}, {data[1]['password']}")
+        print("비번 불일치함")
+        return jsonify({'error': 'error'})
 
 # 회원가입 화면
 @app.route('/signUp')
@@ -104,22 +123,16 @@ def sign():
     name = data[0]['name']
     email = data[1]['email']
     password = data[2]['password']
-    conn = connect()
-    cur = conn.cursor()
-    cur.execute(f'select * from chatbotuser where userName="{name}"')
-    conn.commit()
-    temp = list(cur.fetchall())
-    for user in temp:
-        if user[1] == email and user[2] == password:
-            return jsonify({'error': 'another_email_or_password'})
-    thread = client.beta.threads.create()
-    print(thread)
-    conn = connect()
-    cur = conn.cursor()
-    cur.execute(f"insert into chatbotuser values('{name}', '{email}', '{password}', '{thread.id}')")
-    conn.commit()
-    conn.close()
-    return jsonify({'redirect': url_for('login')})
+    
+    if not chech_user_data(name, email, password):
+        conn = connect()
+        cur = conn.cursor()
+        thread = client.beta.threads.create()
+        cur.execute("insert into chatbotuser (userName, email, password, thread_ID) values (?, ?, ?, ?)", (name, email, password, thread.id))
+        conn.commit()
+        conn.close()
+        return jsonify({'redirect': url_for('login')})
+    return jsonify({'error': 'another_email_or_password'})
 
 # 챗봇과 대화
 @app.route('/ask', methods=['POST'])

@@ -7,14 +7,17 @@
     <title>Login</title>
 </head>
 <body>
-        <div class="login-wrapper">
+    <img src="static/images/login_bottom_img.png" alt="Bottom Image" class="bottom-image">
+    <img class="background-image" src="static/images/login_background.png" alt="배경 이미지">
+    <div class="login-wrapper">
+        <div class="login-container">
             <h2>Login</h2>
             <input type="text" id="user-email" name="userName" placeholder="Email">
             <input type="password" id="user-password" name="userPassword" placeholder="Password">
             <button class="login" onclick="logIn()">Login</button>
             <a href="/signUp" class="signup-link">회원가입</a>
         </div>
-        <img src="static/images/login_bottom_img.png" alt="Bottom Image" class="bottom-image">
-        <script src="static/javascript/login.js"></script>
+    </div>
+    <script src="static/javascript/login.js"></script>
 </body>
 </html>

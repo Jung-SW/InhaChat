@@ -11,22 +11,36 @@ body{
     align-items: center;
     height: 100vh;
     margin: 0;
-
-    background-image: url('../images/login_background.png'); /* 배경 이미지 파일 경로 설정 */
-    background-size: 50%;
-    background-position: center;
-    background-repeat: no-repeat; 
-    background-color: #1e244f;
+    background-color: rgb(30, 36, 79);
 }
 
-.login-wrapper{
-    width: 45%;
-    height: 700px;
-    padding: 40px;
-    top: 40%;
-    left: 27%;
-    position: fixed;
-    box-sizing: border-box;
+.background-image {
+    max-width: 740px;
+    max-height: auto;
+    margin-top: -10vh;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
+
+.login-wrapper {
+    margin-top: -11vh;
+    position: absolute;
+    top: 51%;
+    left: 50%;
+    transform: translate(-50%, -53%);
+    width: 660px;
+    padding: 20px 40px;
+    height: 460px;
+    
+}
+
+.login-container {
+    margin-top: 180px;
+    padding: 20px 40px;
+    border-radius: 8px;
+    min-width: 400px;
 }
 
 h2{
@@ -69,7 +83,8 @@ input::placeholder{
 .bottom-image {
     position: fixed;
     bottom: 0;
-    left: 35%;  
-    width: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
     top: 83%;
 }
