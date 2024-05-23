@@ -20,6 +20,22 @@ def updateChatGPT():
     except:
         pass
     everytime_data_crawling(1, 1, 3)
+    # vector_store = client.beta.vector_stores.create(name="Everytime Data")
+    # file_paths = ["database/everytime2024y.json"]
+    # file_streams = [open(path, 'rb') for path in file_paths]
+    
+    # file_batch = client.beta.vector_stores.file_batches.upload_and_poll(
+    #     vector_store_id = vector_store.id, files=file_streams
+    # )
+    
+    # print(file_batch.status)
+    # print(file_batch.file_counts)
+    
+    # assistant = client.beta.assistants.update(
+    #     assistant_id=os.environ['OPENAI_ASSISTANT_KEY'],
+    #     tool_resources={"file_search": {"vector_store_ids": [vector_store.id]}},
+    # )
+    
     print("update files")
 
 load_dotenv()
@@ -35,7 +51,7 @@ Session(app)
 
 
 scheduler = BackgroundScheduler()
-scheduler.add_job(func=updateChatGPT, trigger="interval", hours=1)
+scheduler.add_job(func=updateChatGPT, trigger="interval", minutes=1)
 scheduler.start()
 
 atexit.register(lambda: scheduler.shutdown())
@@ -203,3 +219,4 @@ def ask():
 
 if __name__ == '__main__':
     app.run(debug=True)
+    
