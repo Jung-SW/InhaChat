@@ -38,7 +38,7 @@ def updateChatGPT():
     
     print("update files")
 
-def chech_user_data(name, email, password):
+def check_user_data(name, email, password):
     conn = connect()
     cur = conn.cursor()
     select_query = 'select userName, email, password from chatbotuser'
@@ -78,9 +78,22 @@ def enter():
 # 메인 화면
 @app.route('/main')
 def main():
+    print(f"현재 Thread: {session.get('thread_id')}")
     if session['check_login'] == False:
         return redirect(url_for('login'))
     return render_template('index.html')
+
+# 새로고침
+@app.route('/refresh')
+def refresh():
+    thread = client.beta.threads.create()
+    conn = connect()
+    cur = conn.cursor()
+    cur.execute('update chatbotuser set thread_ID = ? where email = ?', (thread.id, session.get('email')))
+    conn.commit()
+    conn.close()
+    session['thread_id'] = thread.id
+    return redirect(url_for('main'))
 
 # 로그인 화면
 @app.route('/login')
@@ -96,18 +109,20 @@ def login_check():
     conn = connect()
     cur = conn.cursor()
     
-    query = "select password from chatbotuser where email=?"
+    query = "select email, password, thread_ID from chatbotuser where email=?"
     cur.execute(query, (data[0]['email'], ))
     
-    db_password = cur.fetchone()
+    db_user = cur.fetchone()
     conn.close()
-    if db_password[0] == data[1]['password']:
-        print(f"{db_password[0]}, {data[1]['password']}")
+    if db_user[1] == data[1]['password']:
+        print(f"{db_user[1]}, {data[1]['password']}")
         print("비번 일치함")
         session['check_login'] = True
+        session['email'] = db_user[0]
+        session['thread_id'] = db_user[2]
         return jsonify({'redirect': url_for('main')})
     else:
-        print(f"{db_password[0]}, {data[1]['password']}")
+        print(f"{db_user[1]}, {data[1]['password']}")
         print("비번 불일치함")
         return jsonify({'error': 'error'})
 
@@ -124,7 +139,7 @@ def sign():
     email = data[1]['email']
     password = data[2]['password']
     
-    if not chech_user_data(name, email, password):
+    if not check_user_data(name, email, password):
         conn = connect()
         cur = conn.cursor()
         thread = client.beta.threads.create()
@@ -203,9 +218,10 @@ def ask():
         인하대학교 국제처 사이트를 알려드릴게요 🦆<br><br>
         <a href="https://internationalcenter.inha.ac.kr/internationalcenter/index.do">인하대학교 국제처</a><br>
         """
+    elif question == "thread":
+        answer = f"현재 thread: {session.get('thread_id')}"
     else:
         THREAD_ID = session.get('thread_id')
-        
         answer = "인공지능 수리중..."
         # client.beta.threads.messages.create(
         #     thread_id=THREAD_ID,

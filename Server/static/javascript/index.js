@@ -1,5 +1,6 @@
 function refreshPage() {
     window.location.reload();
+    window.location.href = '/refresh';
 }
 
 function chatbotAnswer(customInput) {
