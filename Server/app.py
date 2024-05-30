@@ -6,7 +6,7 @@ import time
 from flask_session import Session
 from apscheduler.schedulers.background import BackgroundScheduler
 import atexit
-from everytime_data_crawling import everytime_data_crawling
+from scheduling_Update import update
 import sqlite3
 
 conn, cur = None, None
@@ -15,27 +15,7 @@ def connect():
     return sqlite3.connect('userDB/user_threadDB.db')
 
 def updateChatGPT():
-    try:
-        os.chdir(r'./database')
-    except:
-        pass
-    everytime_data_crawling(1, 1, 3)
-    # vector_store = client.beta.vector_stores.create(name="Everytime Data")
-    # file_paths = ["database/everytime2024y.json"]
-    # file_streams = [open(path, 'rb') for path in file_paths]
-    
-    # file_batch = client.beta.vector_stores.file_batches.upload_and_poll(
-    #     vector_store_id = vector_store.id, files=file_streams
-    # )
-    
-    # print(file_batch.status)
-    # print(file_batch.file_counts)
-    
-    # assistant = client.beta.assistants.update(
-    #     assistant_id=os.environ['OPENAI_ASSISTANT_KEY'],
-    #     tool_resources={"file_search": {"vector_store_ids": [vector_store.id]}},
-    # )
-    
+    update()
     print("update files")
 
 def check_user_data(name, email, password):
@@ -64,7 +44,7 @@ Session(app)
 
 
 scheduler = BackgroundScheduler()
-scheduler.add_job(func=updateChatGPT, trigger="interval", minutes=30)
+scheduler.add_job(func=updateChatGPT, trigger="interval", hours=1)
 scheduler.start()
 
 atexit.register(lambda: scheduler.shutdown())
@@ -225,7 +205,7 @@ def ask():
         answer = "인공지능 수리중..."
         # client.beta.threads.messages.create(
         #     thread_id=THREAD_ID,
-            
+
         #     role="user",
         #     content=question
         # )
@@ -249,4 +229,3 @@ def ask():
 
 if __name__ == '__main__':
     app.run(debug=True)
-    
